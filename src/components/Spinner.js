@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Cards = () => {
+const Spinner = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const Cards = () => {
   )
 }
 
-export default Cards
+export default Spinner
