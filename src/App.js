@@ -8,7 +8,7 @@ import Spinner from "./components/Spinner";
 
 const App = () => {
 
-  const [courses, setCourses] = useState(null)
+  const [courses, setCourses] = useState([])
   const [loading, setLoading] = useState(true);
 
   async function fetchData() {
@@ -16,7 +16,7 @@ const App = () => {
     try {
       let res = await fetch(apiUrl);
       let output = await res.json();
-      setCourses(output);
+      setCourses(output.data);
     } catch (error) {
       toast.error("Network Error");
     }
@@ -28,11 +28,11 @@ const App = () => {
   }, [])
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <div><Navbar/></div>
       <div><Filter filterData = {filterData} /></div>
       <div>
-        {loading ? (<Spinner/>) : (<Cards/>)}
+        {loading ? (<Spinner/>) : (<Cards courses = {courses}/>)}
       </div>
     </div>
   )
